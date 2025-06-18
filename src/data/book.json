@@ -1,0 +1,49 @@
+{
+  "1": {
+    "id": 1,
+    "title": "War and Peace",
+    "author": "Leo Tolstoy",
+    "genre": "Classic Literature",
+    "rating": 4.8,
+    "reviewsCount": 1247,
+    "cover": "/images/war-and-peace-cover.png",
+    "description": "Tolstoy's epic masterpiece chronicles Russian society during the Napoleonic Wars, weaving together intimate personal stories with grand historical events in a profound exploration of human nature, love, and destiny.",
+    "fullReview": "War and Peace stands as one of the greatest achievements in world literature, a sweeping epic that captures the essence of Russian society during one of its most turbulent periods. Tolstoy's masterwork weaves together the personal stories of aristocratic families with the grand historical narrative of the Napoleonic Wars.\n\nThe novel's strength lies not just in its epic scope, but in its intimate portrayal of human nature. Characters like Pierre Bezukhov, Natasha Rostova, and Prince Andrei Bolkonsky are drawn with such psychological depth that they feel like real people we've known all our lives. Tolstoy's ability to shift seamlessly between battlefield scenes and drawing room conversations, between philosophical musings and romantic entanglements, creates a rich tapestry that mirrors life itself.\n\nWhat makes War and Peace truly exceptional is Tolstoy's understanding that history is not made by great men alone, but by the countless small decisions and actions of ordinary people. His famous theory of history, woven throughout the narrative, challenges conventional notions of leadership and destiny.\n\nThe novel's length might seem daunting, but every page serves a purpose in building this magnificent portrait of humanity. Tolstoy's prose, even in translation, maintains its power to move and inspire. This is not just a book to be read, but an experience to be lived through.\n\nFor anyone seeking to understand the human condition, the nature of love, war, family, and society, War and Peace remains unparalleled. It's a book that rewards multiple readings, revealing new layers of meaning with each encounter.",
+    "publishYear": 1869,
+    "pages": 1225,
+    "language": "Russian",
+    "originalLanguage": "Russian",
+    "publisher": "The Russian Messenger",
+    "isbn": "978-0-14-044794-7",
+    "dimensions": "5.1 x 1.9 x 7.8 inches",
+    "weight": "2.1 pounds",
+    "tags": ["epic", "history", "philosophy", "romance", "war", "russian-literature", "classic"],
+    "themes": ["War", "Peace", "Love", "Family", "History", "Philosophy", "Russian Society"],
+    "awards": ["Time's All-Time 100 Greatest Novels", "BBC's Big Read Top 100"],
+    "adaptations": ["1956 Film", "1967 Soviet Film", "2016 BBC Series"],
+    "reviewer": "Anna Peterson",
+    "reviewerAvatar": "/images/reviewer-anna.png",
+    "reviewerBio": "Literary critic and professor of Russian Literature at Columbia University. Author of 'The Russian Soul in Literature' and recipient of the National Book Critics Circle Award.",
+    "publishDate": "2024-01-15",
+    "readingTime": "12 min read",
+    "likes": 324,
+    "dislikes": 12,
+    "ratingBreakdown": {
+      "5": 65,
+      "4": 22,
+      "3": 8,
+      "2": 3,
+      "1": 2
+    },
+    "keyQuotes": [
+      "Well, Prince, so Genoa and Lucca are now no more than family estates of the Buonapartes.",
+      "We can know only that we know nothing. And that is the highest degree of human wisdom.",
+      "If everyone fought for their own convictions, there would be no war."
+    ],
+    "similarBooks": [
+      { "id": 4, "title": "Anna Karenina", "author": "Leo Tolstoy" },
+      { "id": 5, "title": "The Brothers Karamazov", "author": "Fyodor Dostoevsky" },
+      { "id": 6, "title": "Doctor Zhivago", "author": "Boris Pasternak" }
+    ]
+  }
+}

@@ -25,4 +25,24 @@ export class AmazonController {
   getBrowseNodes(@Body() body: { id: string }) {
     return this.amazonService.getBrowseNodes(body.id);
   }
+
+
+  @Post('search-items')
+  @ApiOperation({ summary: 'Поиск товаров по Node Id' })
+  @ApiBody({
+    schema: {
+      type: 'object',
+      properties: {
+        nodeId: {
+          type: 'string',
+          example: '13887280011',
+          description: 'ID browse node (например, из Amazon BrowseNodes API)',
+        },
+      },
+      required: ['nodeId'],
+    },
+  })
+  searchItems(@Body() body: { nodeId: string }) {
+    return this.amazonService.searchItems(body.nodeId);
+  }
 }

@@ -8,36 +8,98 @@ import {
   Delete,
 } from '@nestjs/common';
 import { ProductsService } from './products.service';
-import { CreateProductDto } from './dto/create-product.dto';
-import { UpdateProductDto } from './dto/update-product.dto';
+import { ApiTags, ApiOperation, ApiResponse, ApiBody, ApiParam } from '@nestjs/swagger';
 
 @Controller('products')
+@ApiTags('Products')
 export class ProductsController {
   constructor(private readonly productsService: ProductsService) {}
 
   @Post('new-category')
-  async createCategory(@Body('name') name: string): Promise<string> {
-    return await this.productsService.createCategory(name);
+  @ApiOperation({ summary: 'Create a new category' })
+  @ApiBody({
+    schema: {
+      type: 'object',
+      properties: {
+        name: { type: 'string', example: 'Books' },
+        nodeId: { type: 'string', example: '123456' },
+      },
+    },
+  })
+  @ApiResponse({ status: 201, description: 'Category created' })
+  async createCategory(
+    @Body('name') name: string,
+    @Body('nodeId') nodeId: string,
+  ): Promise<string> {
+    return await this.productsService.createCategory(name, nodeId);
+  }
+
+  @Post('new-categories')
+  @ApiOperation({ summary: 'Create multiple categories' })
+  @ApiBody({
+    schema: {
+      type: 'object',
+      properties: {
+        categories: {
+          type: 'array',
+          items: {
+            type: 'object',
+            properties: {
+              name: { type: 'string', example: 'Electronics' },
+              nodeId: { type: 'string', example: '987654' },
+            },
+          },
+        },
+      },
+    },
+  })
+  @ApiResponse({ status: 201, description: 'Categories created' })
+  async createCategories(
+    @Body('categories') categories: { name: string; nodeId: string }[],
+  ) {
+    return await this.productsService.createCategories(categories);
   }
 
   @Patch('update-category/:id')
+  @ApiOperation({ summary: 'Update a category by ID' })
+  @ApiParam({ name: 'id', type: 'string', example: '1' })
+  @ApiBody({
+    schema: {
+      type: 'object',
+      properties: {
+        name: { type: 'string', example: 'Updated Books' },
+        nodeId: { type: 'string', example: '654321' },
+      },
+    },
+  })
+  @ApiResponse({ status: 200, description: 'Category updated' })
   async updateCategory(
     @Param('id') id: string,
     @Body('name') name: string,
+    @Body('nodeId') nodeId: string,
   ): Promise<string> {
-    return await this.productsService.updateCategory(+id, name);
+    return await this.productsService.updateCategory(+id, name, nodeId);
   }
+
   @Delete('delete-category/:id')
+  @ApiOperation({ summary: 'Delete a category by ID' })
+  @ApiParam({ name: 'id', type: 'string', example: '1' })
+  @ApiResponse({ status: 200, description: 'Category deleted' })
   async deleteCategory(@Param('id') id: string): Promise<string> {
     return await this.productsService.deleteCategory(+id);
   }
 
   @Get('categories')
+  @ApiOperation({ summary: 'Get all categories' })
+  @ApiResponse({ status: 200, description: 'List of categories' })
   async getCategories(): Promise<any[]> {
     return await this.productsService.getCategories();
   }
 
   @Get('category/:id')
+  @ApiOperation({ summary: 'Get a single category by ID' })
+  @ApiParam({ name: 'id', type: 'string', example: '1' })
+  @ApiResponse({ status: 200, description: 'Category found' })
   async getCategoryById(@Param('id') id: string): Promise<any> {
     return await this.productsService.getCategoryById(+id);
   }

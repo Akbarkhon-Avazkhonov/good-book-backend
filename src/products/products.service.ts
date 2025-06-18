@@ -11,14 +11,21 @@ export class ProductsService {
     return 'This action adds a new product';
   }
 
-  async createCategory(name: string): Promise<any> {
+  async createCategory(name: string, nodeId: string): Promise<any> {
     // Here should be logic to create a category
     return await this.prisma.category.create({
-      data: { name },
+      data: { name, nodeId }, // Assuming nodeId is optional and can be null
     });
   }
 
-  async updateCategory(id: number, name: string): Promise<any> {
+  async createCategories(categories: { name: string; nodeId: string }[]) {
+    // Here should be logic to create multiple categories
+    return await this.prisma.category.createMany({
+      data: categories,
+    });
+  }
+
+  async updateCategory(id: number, name: string, nodeId: string): Promise<any> {
     return await this.prisma.category.update({
       where: { id },
       data: { name },

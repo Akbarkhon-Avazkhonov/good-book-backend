@@ -18,15 +18,18 @@ model Category {
   name      String    @unique
   createdAt DateTime  @default(now())
   updatedAt DateTime  @updatedAt
+  nodeId    String    @unique
   products  Product[]
 }
 
 model Product {
   id          Int      @id @default(autoincrement())
   name        String
+  ASIN        String   @unique
   description String?
   price       Float?
   info        Json?
+  infoFromApi Json?
   categoryId  Int
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
