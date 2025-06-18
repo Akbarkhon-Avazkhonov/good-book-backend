@@ -8,7 +8,13 @@ import {
   Delete,
 } from '@nestjs/common';
 import { ProductsService } from './products.service';
-import { ApiTags, ApiOperation, ApiResponse, ApiBody, ApiParam } from '@nestjs/swagger';
+import {
+  ApiTags,
+  ApiOperation,
+  ApiResponse,
+  ApiBody,
+  ApiParam,
+} from '@nestjs/swagger';
 
 @Controller('products')
 @ApiTags('Products')
@@ -102,5 +108,28 @@ export class ProductsController {
   @ApiResponse({ status: 200, description: 'Category found' })
   async getCategoryById(@Param('id') id: string): Promise<any> {
     return await this.productsService.getCategoryById(+id);
+  }
+
+  @Get('all-products')
+  @ApiOperation({ summary: 'Get all products' })
+  @ApiResponse({ status: 200, description: 'List of products' })
+  async getAllProducts(): Promise<any[]> {
+    return await this.productsService.getAllProducts();
+  }
+
+  @Get('product/:id')
+  @ApiOperation({ summary: 'Get a single product by ID' })
+  @ApiParam({ name: 'id', type: 'string', example: '1' })
+  @ApiResponse({ status: 200, description: 'Product found' })
+  async getProductById(@Param('id') id: string): Promise<any> {
+    return await this.productsService.getProductById(+id);
+  }
+
+  @Get('categories-products/:id')
+  @ApiOperation({ summary: 'Get all products in a category by ID' })
+  @ApiParam({ name: 'id', type: 'string', example: '1' })
+  @ApiResponse({ status: 200, description: 'List of products in category' })
+  async getProductsByCategoryId(@Param('id') id: string): Promise<any[]> {
+    return await this.productsService.getProductsByCategoryId(+id);
   }
 }

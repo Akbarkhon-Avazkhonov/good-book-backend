@@ -61,4 +61,15 @@ export class ProductsService {
       where: { id },
     });
   }
+  async getAllProducts(): Promise<any[]> {
+    // Here should be logic to get all products
+    return await this.prisma.product.findMany();
+  }
+
+  async getProductsByCategoryId(id: number): Promise<any[]> {
+    // Here should be logic to get all products in a category by ID
+    return await this.prisma.product.findMany({
+      where: { categoryId: id },
+    });
+  }
 }
