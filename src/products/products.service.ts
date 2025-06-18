@@ -35,6 +35,23 @@ export class ProductsService {
     return products;
   }
 
+  async getProductById(id: number): Promise<any> {
+    const cacheKey = `product:${id}`;
+    const cached = await this.cacheManager.get(cacheKey);
+
+    if (cached) return cached as any;
+
+    const product = await this.prisma.product.findUnique({
+      where: { id },
+    });
+
+    if (!product) throw new Error('Product not found');
+
+    await this.cacheManager.set(cacheKey, product, 10 * 60 * 60 * 1000); // 10 часов
+
+    return product;
+  }
+
   async getProductsByCategoryId(id: number): Promise<any[]> {
     const cacheKey = `products:category:${id}`;
     const cached = await this.cacheManager.get(cacheKey);

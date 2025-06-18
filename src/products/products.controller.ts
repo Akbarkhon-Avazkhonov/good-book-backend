@@ -116,13 +116,13 @@ export class ProductsController {
     return await this.productsService.getAllProducts();
   }
 
-  // @Get('product/:id')
-  // @ApiOperation({ summary: 'Get a single product by ID' })
-  // @ApiParam({ name: 'id', type: 'string', example: '1' })
-  // @ApiResponse({ status: 200, description: 'Product found' })
-  // async getProductById(@Param('id') id: string): Promise<any> {
-  //   return await this.productsService.getProductById(+id);
-  // }
+  @Get('product/:id')
+  @ApiOperation({ summary: 'Get a single product by ID' })
+  @ApiParam({ name: 'id', type: 'string', example: '1' })
+  @ApiResponse({ status: 200, description: 'Product found' })
+  async getProductById(@Param('id') id: string): Promise<any> {
+    return await this.productsService.getProductById(+id);
+  }
 
   @Get('categories-products/:id')
   @ApiOperation({ summary: 'Get all products in a category by ID' })
