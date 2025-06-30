@@ -62,7 +62,10 @@ export class TimerService {
             return this.prisma.product.update({
               where: { ASIN: item.ASIN },
               data: {
-                info: JSON.stringify(parsedData),
+                info: JSON.stringify({
+                  ...parsedData,
+                  DetailPageURL: item.DetailPageURL,
+                }),
               },
             });
           })
