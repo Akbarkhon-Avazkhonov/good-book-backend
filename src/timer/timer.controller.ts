@@ -9,7 +9,7 @@ export class TimerController {
   constructor(private readonly timerService: TimerService) {}
 
   // i need function that will call function every 12 hours
-  @Cron('47 * * * *') // Every 12 hours
+  @Cron(CronExpression.EVERY_12_HOURS) // Every 12 hours
   handleCron() {
     this.timerService.callPaapiForAllCategories();
   }
